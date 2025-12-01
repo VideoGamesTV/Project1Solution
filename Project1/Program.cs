@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
@@ -49,13 +49,14 @@ class SentenceGame
 	{
 		bool exitName = false;
 		while (!exitName)
-		{   Console.Clear();
+		{
+			Console.Clear();
 			//string sureName;
 			Console.WriteLine("Придумайте никнейм или имя");
 			Console.Write("Мой никнейм/Имя: ");
 			string nickName = Console.ReadLine();
 			bool nickNameEmptyOrNo = string.IsNullOrEmpty(nickName);
-			if (nickNameEmptyOrNo == false);
+			if (nickNameEmptyOrNo == false) ;
 			{
 				NameSure(nickName);
 				break;
@@ -68,10 +69,10 @@ class SentenceGame
 		while (!exitGame)
 		{
 			Console.Clear();
-            Console.WriteLine($"Привет {nickName}!\nВот правила игры: \nУ тебя есть 5 секунд что бы запомнить предложение,\nПотом тебе его нужно будет написать,\nА потом уже сверяй что правильно а что нет.");
+			Console.WriteLine($"Привет {nickName}!\nВот правила игры: \nУ тебя есть 5 секунд что бы запомнить предложение,\nПотом тебе его нужно будет написать,\nА потом уже сверяй что правильно а что нет.");
 			Console.WriteLine("1. Начать игру");
 			Console.WriteLine("2. Вернутся");
-            Console.Write("Выберите: ");
+			Console.Write("Выберите: ");
 			string choice = Console.ReadLine();
 			switch (choice)
 			{
@@ -92,29 +93,29 @@ class SentenceGame
 	{
 		bool exitSure = false;
 		while (!exitSure)
-		{	
+		{
 			bool nickNameEmptyOrNo = string.IsNullOrEmpty(nickName);
 			Console.Clear();
 			Console.WriteLine($"Вы правильно выбрали никнейм/имя?: {nickName}");
 			Console.WriteLine("1. Да");
 			Console.WriteLine("2. Нет");
-            Console.Write("Выберите: ");
+			Console.Write("Выберите: ");
 			string choice = Console.ReadLine();
 			switch (choice)
 			{
 				case "1":
-					if (nickNameEmptyOrNo == true)
+					if (!nickNameEmptyOrNo == true)
 					{
 						GameMenu(nickName);
 					}
 					else
 					{
-                        Console.WriteLine("Вы неприваильно набрали имя/никнейм!");
+						Console.WriteLine("Вы неприваильно набрали имя/никнейм!");
 						Console.ReadKey();
 					}
 					break;
 				case "2":
-					
+
 					break;
 				default:
 					Console.WriteLine("Неправильный выбор!");
@@ -126,7 +127,7 @@ class SentenceGame
 	static Random random = new Random();
 	static void Game(string nickName)
 	{
-		
+
 
 
 		string[] sentences = { "Собака шла по улице.", "Весеннее утро разбудило город первыми лучами солнца.", "Маленький котёнок ловко запрыгнул на подоконник и принялся наблюдать за птицами.",
@@ -164,11 +165,11 @@ class SentenceGame
 
 		Console.Clear();
 		System.Threading.Thread.Sleep(1000); //пауза на 1 секунду
-        Console.WriteLine("1!");
+		Console.WriteLine("1!");
 		System.Threading.Thread.Sleep(1000); //снова пауза на 1 секунду
-        Console.WriteLine("2!!");
+		Console.WriteLine("2!!");
 		System.Threading.Thread.Sleep(1000); //последний цикл паузы на 1 секунду
-        Console.WriteLine("3!!!");
+		Console.WriteLine("3!!!");
 		Console.Clear();
 		bool EndGame = false;
 		while (!EndGame)
@@ -222,21 +223,21 @@ class SentenceGame
 			string playerSintance = Console.ReadLine();
 
 
-			
-			
-				if (playerSintance == randomSentences)
-				{
 
-					Victory(nickName, randomSentences, playerSintance);
-				}
-				else
-				{
 
-					GameOver(nickName, randomSentences, playerSintance);
-				}
+			if (playerSintance == randomSentences)
+			{
+
+				Victory(nickName, randomSentences, playerSintance);
 			}
-		
-		
+			else
+			{
+
+				GameOver(nickName, randomSentences, playerSintance);
+			}
+		}
+
+
 	}
 	static void Victory(string nickName, string randomSentences, string playerSintance)
 	{
@@ -251,8 +252,20 @@ class SentenceGame
 			Console.WriteLine("2. Выйти в меню");
 			Console.Write("Выберите: ");
 
-			Console.ReadKey();
-			Environment.Exit(0);
+			string choice = Console.ReadLine();
+			switch (choice)
+			{
+				case "1":
+					Game(nickName);
+					break;
+				case "2":
+					GameMenu(nickName);
+					break;
+				default:
+					Console.WriteLine("Неправильный выбор!");
+					Console.ReadKey();
+					break;
+			}
 		}
 	}
 	static void GameOver(string nickName, string randomSentences, string playerSintance)
@@ -261,9 +274,9 @@ class SentenceGame
 		bool retry1 = false;
 		while (!retry1)
 		{
-            Console.WriteLine($"{nickName}, Игра окончена!");
-            Console.WriteLine($"Правильное предложение: {randomSentences}");
-            Console.WriteLine($"Твоё предложение: {playerSintance}");
+			Console.WriteLine($"{nickName}, Игра окончена!");
+			Console.WriteLine($"Правильное предложение: {randomSentences}");
+			Console.WriteLine($"Твоё предложение: {playerSintance}");
 			Console.WriteLine("1. Играть снова");
 			Console.WriteLine("2. Выйти в меню");
 			Console.Write("Выберите: ");
@@ -275,14 +288,14 @@ class SentenceGame
 					Game(nickName);
 					break;
 				case "2":
-					MainMenu();
+					GameMenu(nickName);
 					break;
 				default:
-                    Console.WriteLine("Неправильный выбор!");
+					Console.WriteLine("Неправильный выбор!");
 					Console.ReadKey();
 					break;
 			}
-			
+
 		}
 
 	}
