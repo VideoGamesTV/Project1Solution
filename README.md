@@ -1,5 +1,3 @@
 # Sentence Game
 Version 1.001
-Changes:
-Fix bugs
-+Repeat game
+this game is about memorizing sentences and then writing them down from memory
