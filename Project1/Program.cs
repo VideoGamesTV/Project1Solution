@@ -56,7 +56,7 @@ class SentenceGame
 			Console.Write("Мой никнейм/Имя: ");
 			string nickName = Console.ReadLine();
 			bool nickNameEmptyOrNo = string.IsNullOrEmpty(nickName);
-			if (nickNameEmptyOrNo == false) ;
+			if (nickNameEmptyOrNo)
 			{
 				NameSure(nickName);
 				break;
@@ -115,7 +115,7 @@ class SentenceGame
 					}
 					break;
 				case "2":
-
+					NameMenu();
 					break;
 				default:
 					Console.WriteLine("Неправильный выбор!");
